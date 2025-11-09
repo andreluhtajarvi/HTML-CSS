@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Espoo Hockey Supplies</title>
+    <link rel="stylesheet" href="style.css">
+    <style>
+        body { font-family: Arial, sans-serif; }
+        header { background: #003366; color: white; padding: 10px 20px; }
+        nav ul { display: flex; gap: 15px; }
+        nav a { color: white; }
+        nav a.active { text-decoration: underline; }
+        main > section { display: none; padding: 20px; }
+        main > section.active { display: block; }
+        .product-gallery { display: flex; flex-wrap: wrap; gap: 20px; }
+        .product-item { flex: 1 1 250px; }
+        img { max-width: 100%; height: auto; }
+        footer { background: #003366; color: white; text-align: center; padding: 10px; margin-top: 20px; }
+        .contact-container { display: flex; gap: 30px; flex-wrap: wrap; }
+        iframe { width: 100%; height: 300px; border: 0; }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Espoo Hockey Supplies</h1>
+        <nav>
+            <ul>
+                <li><a href="#" data-page="home" class="active">Home</a></li>
+                <li><a href="#" data-page="products">Products</a></li>
+                <li><a href="#" data-page="contact">Contact</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <!-- Home Page -->
+        <section id="home" class="active">
+            <h2>Welcome to Espoo Hockey Supplies</h2>
+            <figure>
+                <img src="ehs-logo.jpg" width="600" height="600" alt="EHS Ice Hockey Logo">
+                <figcaption>The leading ice hockey gear reseller in Finland 🏒</figcaption>
+            </figure>
+        </section>
+
+        <!-- Products Page -->
+        <section id="products">
+            <h2>Our Products</h2>
+            <figure>
+                <img src="ice-hockey-shop.jpg" width="1000" height="450" alt="Sports Store in Espoo">
+                <figcaption>Welcome to visit our store in Espoo</figcaption>
+            </figure>
+            <div class="product-gallery">
+                <div class="product-item">
+                    <h3>Hockey stick</h3>
+                    <img src="hockey-stick.jpg" width="250" height="250" alt="Ice Hockey Stick">
+                    <p>Professional ice hockey stick made of carbon fiber - <b>149€</b></p>
+                </div>
+                <div class="product-item">
+                    <h3>Hockey gloves</h3>
+                    <img src="hockey-gloves.png" width="250" height="250" alt="Ice Hockey Gloves">
+                    <p>Comfortable gloves made of leather & synthetic materials - <b>99€</b></p>
+                </div>
+                <div class="product-item">
+                    <h3>Skates</h3>
+                    <img src="skates.jpg" width="250" height="250" alt="Ice Hockey Skates">
+                    <p>Lightweight skates for ultimate performance - <b>549€</b></p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Contact Page -->
+        <section id="contact">
+            <h2>Contact Us</h2>
+            <div class="contact-container">
+                <div class="contact-info">
+                    <p>
+                        Visit us at:<br>
+                        <strong>Espoo Hockey Supplies</strong><br>
+                        Urheilupuistontie 3<br>
+                        02200 ESPOO<br>
+                        Finland<br><br>
+                        Email: <a href="mailto:info@ehs.com">info@ehs.com</a><br>
+                        Phone: <a href="tel:+358401231234">+358 (0)40 123 1234</a>
+                    </p>
+                </div>
+                <div class="map">
+                    <iframe
+                        src="https://www.google.com/maps?q=Urheilopuistontie+3+Espoo+Finland&output=embed"
+                        title="Map to Espoo Hockey Supplies">
+                    </iframe>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Simple page switcher
+        const links = document.querySelectorAll('nav a');
+        const sections = document.querySelectorAll('main > section');
+
+        links.forEach(link => {
+            link.addEventListener('click', (e) => {
+                e.preventDefault();
+                const page = link.getAttribute('data-page');
+
+                // Remove active class from all links
+                links.forEach(l => l.classList.remove('active'));
+                link.classList.add('active');
+
+                // Show selected section
+                sections.forEach(sec => sec.classList.remove('active'));
+                document.getElementById(page).classList.add('active');
+            });
+        });
+    </script>
+</body>
+</html>
